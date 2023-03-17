@@ -1,7 +1,7 @@
 name: Terraform_Run
 
 on:
-  workflow_call:
+  workflow_dispatch:
 
 jobs: 
   main:
