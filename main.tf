@@ -6,7 +6,7 @@ terraform {
 }
 
 module "hello-world" {
-  source  = "git::https://github.com/jonjozwiak/hello-world-module-test.git//?ref=main"
+  source  = "git@github.com/jonjozwiak/hello-world-module-test.git//?ref=main"
 }
 
 # website::tag::1:: The simplest possible Terraform module: it just outputs "Hello, World!"
