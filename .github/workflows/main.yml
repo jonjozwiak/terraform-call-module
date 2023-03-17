@@ -1,0 +1,32 @@
+name: Terraform_Run
+
+on:
+  workflow_call:
+
+jobs: 
+  main:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout repo
+         uses: actions/checkout@v2
+         
+       -  name: GitHub credentials
+          run: |
+            git config --global --unset-all credential.helper 
+            # Note GITHUB_TOKEN is my PAT with read access to my private git repos to pull modules
+            git config --global url."https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf https://github.com
+
+       - name: Setup Terraform
+         uses: hashicorp/setup-terraform@v2
+         with:
+           terraform_version: 1.4.1
+    
+       - name: Terraform Init
+         run: terraform init
+
+       - name: Terraform Plan
+         run: terraform plan
+         
+       - name: Terraform Apply
+         run: terraform apply
+    
