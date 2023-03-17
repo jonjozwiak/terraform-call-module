@@ -14,7 +14,7 @@ jobs:
           run: |
             git config --global --unset-all credential.helper 
             # Note GITHUB_TOKEN is my PAT with read access to my private git repos to pull modules
-            git config --global url."https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com".insteadOf https://github.com
+            git config --global url."https://oauth2:${{ secrets.GH_TOKEN }}@github.com".insteadOf https://github.com
 
        - name: Setup Terraform
          uses: hashicorp/setup-terraform@v2
