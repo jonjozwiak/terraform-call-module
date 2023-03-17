@@ -12,7 +12,10 @@ jobs:
          
        -  name: GitHub credentials
           run: |
-            git config --global --unset-all credential.helper 
+            # unset-all returns exit code 5 if run when the settings don't exist.  || true ignores the failure
+            # https://manpages.ubuntu.com/manpages/trusty/man1/git-config.1.html
+            #	Exit code 5 = You try to unset an option which does not exist
+            git config --global --unset-all credential.helper || true
             # Note GITHUB_TOKEN is my PAT with read access to my private git repos to pull modules
             git config --global url."https://oauth2:${{ secrets.GH_TOKEN }}@github.com".insteadOf https://github.com
 
