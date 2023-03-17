@@ -12,5 +12,5 @@ module "hello-world" {
 
 # website::tag::1:: The simplest possible Terraform module: it just outputs "Hello, World!"
 output "hello_world" {
-  value = module.hello-world.outputs.hello_world
+  value = module.hello-world.hello_world
 }
